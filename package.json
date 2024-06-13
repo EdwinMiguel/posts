@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "link-preview-js": "^3.0.5"
+  }
+}
