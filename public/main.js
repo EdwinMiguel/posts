@@ -6,7 +6,7 @@ form.addEventListener('submit', function (event) {
   const url = document.getElementById('urlInput').value;
   console.log(url)
   
-  fetch('/', {
+  fetch('/preview', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
