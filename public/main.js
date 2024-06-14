@@ -17,6 +17,7 @@ form.addEventListener('submit', function (event) {
   })
   .then(response => response.json())
   .then(data => {
+    console.log(data)
       savePreviewData(data);
   })
   .catch(error => {
@@ -76,8 +77,34 @@ function savePreviewData(data) {
   cardBtn.textContent = "leer";
   cardBtn.href = preview.url;
 
-  descriptionContainer.append(title, date, description, cardBtn);
+  const deleteBtn = document.createElement('button');
+  deleteBtn.classList.add('card__btn-delete');
+  deleteBtn.type = "button";
+  deleteBtn.textContent = "Eliminar";
+
+  descriptionContainer.append(title, date, description, cardBtn, deleteBtn);
   cardDiv.append(imgContainer, descriptionContainer);
 
   blogsSection.appendChild(cardDiv);
+}
+
+document.addEventListener('DOMContentLoaded', function (event) {
+
+  blogsSection.addEventListener('click', function (event) {
+    
+    if (event.target && event.target.classList.contains('card__btn-delete')) {
+      deletePreviewCard(event);
+    }
+      
+  });
+})
+
+// Eliminar card
+
+function deletePreviewCard(event) {
+    console.log(event.target)
+    const card = event.target.closest('.card');
+    if (card) {
+      card.remove();
+    }
 }
