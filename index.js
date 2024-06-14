@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/preview', async (req, res) => {
   const { url } = req.body;
@@ -20,7 +20,7 @@ app.post('/preview', async (req, res) => {
     res.json(data);
   } catch(error) {
     console.error('Error', error);
-    res.status(500);json({error: "error al obtener la vista previa"});
+    res.status(500).json({error: "error al obtener la vista previa"});
   };
 
 });
